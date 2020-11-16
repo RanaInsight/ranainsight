@@ -1,34 +1,67 @@
+/**
+ * Configure your Gatsby site with this file.
+ *
+ * See: https://www.gatsbyjs.org/docs/gatsby-config/
+ */
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `RanaInsight`,
+    description: `Rana Insight is a coaching and career skills counselling business based in the UK `,
+    author:`@gatsbyjs`,
+},
+  plugins: [`gatsby-plugin-styled-components`,
+            `gatsby-transformer-sharp`, 
+            `gatsby-plugin-sharp`,
+            `gatsby-plugin-react-helmet`,
+            `gatsby-plugin-netlify-cms`,
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      name: `Blog`,
+      path: `${__dirname}/src/Blog/`,
+    },
   },
-  plugins: [
-    `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      path: `${__dirname}/src/assets/images`,
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-manifest`,
+  },
+  {
+    resolve: `gatsby-transformer-remark`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 800,
+              linkImagesToOriginal: false,
+            },
+          },
+        ],
       },
+  },
+  {
+    resolve: 'gatsby-plugin-mailchimp',
+    options: {
+    endpoint: 'https://gmail.us2.list-manage.com/subscribe/post?u=2276bbf0cfc8ffa30e00d320b&amp;id=5da6812d9d',
+    }
+  }, 
+  {
+    resolve: `gatsby-plugin-mdx`,
+    options: {
+        extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590,
+            },
+          },
+        ],
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
-  ],
+
+  }
+],
 }
