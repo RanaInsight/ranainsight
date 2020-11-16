@@ -37,7 +37,8 @@
 input::-webkit-input-placeholder {
     color: white; 
     opacity: 0.85; 
-    font-family:'Avenir LT Std 55 Roman'
+    font-family:'Avenir LT Std 55 Roman';
+    padding-left:10px;
 }
 .contactform input{
     width: 100%;
@@ -46,7 +47,7 @@ input::-webkit-input-placeholder {
     border: none;
     color:white;
     background: url('../assets/images/contactbg.png') right no-repeat;
-    padding-left:10px;
+   
 }
 textarea{
     width:100%;
@@ -63,6 +64,7 @@ textarea::placeholder {
     font-family:'Avenir LT Std 55 Roman';
     position:relative;
     top:10px;
+    padding-left:10px;
 }
 .button{
     width: 90px;
